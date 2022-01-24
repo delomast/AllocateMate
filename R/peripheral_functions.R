@@ -144,6 +144,8 @@ summarise.fam <- function(families, parents) {
   return(crosses)
 }
 
+#' @importFrom stats aggregate 
+#' @importFrom stats sd
 generate.fams <- function(H, parents, ped, max_F) {
   
   #Data checks
