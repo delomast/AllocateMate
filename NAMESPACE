@@ -2,3 +2,6 @@
 
 export(allocate.mate.H)
 export(allocate.mate.ped)
+import(dplyr)
+import(lpSolveAPI)
+import(nadiv)

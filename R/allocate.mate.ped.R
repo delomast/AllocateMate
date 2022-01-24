@@ -63,9 +63,6 @@ allocate.mate.ped <- function(ped, parents, max_F = 1, method = "min_F", n_fam_c
   #mhamilton@cgiar.org
   #Feb 2021
   
-  if("nadiv" %in% installed.packages()[, "Package"] == F) {install.packages("nadiv")}   
-  library(nadiv)
-  
   check.ped(ped)
   check.parents(parents)
   check.n_fam_crosses(n_fam_crosses)

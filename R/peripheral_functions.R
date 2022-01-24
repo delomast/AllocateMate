@@ -146,9 +146,6 @@ summarise.fam <- function(families, parents) {
 
 generate.fams <- function(H, parents, ped, max_F) {
   
-  if("dplyr" %in% installed.packages()[, "Package"] == F) {install.packages("dplyr")}   
-  library(dplyr) 
-  
   #Data checks
   check.H(H)
   check.parents(parents)
@@ -235,12 +232,6 @@ generate.fams <- function(H, parents, ped, max_F) {
 }
 
 solve_lp <- function(families, parents, n_fam_crosses, max_F, min_trait) {
-  
-  if("lpSolveAPI" %in% installed.packages()[, "Package"] == F) {install.packages("lpSolveAPI")}   
-  library(lpSolveAPI) 
-  
-  if("dplyr" %in% installed.packages()[, "Package"] == F) {install.packages("dplyr")}   
-  library(dplyr) 
   
   #Data checks
   check.parents(parents)

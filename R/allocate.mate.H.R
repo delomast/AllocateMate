@@ -1,3 +1,13 @@
+# TD addition importing packages instead
+# of calling `library` in the functions
+# The packages are listed under "Imports" so
+#  they will be installed upon package installation
+# if they are not already available
+#' @import dplyr
+#' @import nadiv
+#' @import lpSolveAPI
+NULL
+
 #' allocate.mate.H
 #' 
 #' @description 
@@ -57,9 +67,6 @@
 allocate.mate.H <- function(H, parents, max_F = 1, method = "min_F") {
   #mhamilton@cgiar.org
   #Feb 2021
-  
-  if("nadiv" %in% installed.packages()[, "Package"] == F) {install.packages("nadiv")}   
-  library(nadiv)
   
   check.H(H)
   check.parents(parents)
