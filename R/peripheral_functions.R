@@ -253,13 +253,9 @@ solve_lp <- function(families, parents, n_fam_crosses, max_F, min_trait) {
     par_count_temp <- NULL
     
     #Count times par is a parent in fam.  Will equal 0 (neither SIRE nor DAM), 1 (SIRE or DAM) or 2 (if self)
-    for(par in 1:nrow(parents)){  
-      par_count <- as.matrix((families[fam,"DAM"] == parents[par,1]) + (families[fam,"SIRE"] == parents[par,1]))     
-      par_count_temp <- as.matrix(cbind(par_count_temp,par_count))
-    }
-    par_count_temp <- as.vector(par_count_temp)
+    par_count_temp <- (families[fam,"DAM"] == parents[,1]) + (families[fam,"SIRE"] == parents[,1])
     
-    par_fam_count_temp <- as.vector(1*(fam_combns == as.numeric(families[fam,"fam_combn"])))    
+    par_fam_count_temp <- as.numeric(fam_combns == as.numeric(families[fam,"fam_combn"]))
     
     #vector of counts for the number of times par is a parent in fam
     set.column(mate_lp, fam, c(par_count_temp,par_fam_count_temp))
