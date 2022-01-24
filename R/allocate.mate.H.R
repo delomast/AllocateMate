@@ -77,8 +77,14 @@ allocate.mate.H <- function(H, parents, max_F = 1, method = "min_F") {
   ped <- data.frame(ID = rownames(H),
                     DAM  = 1:nrow(H),
                     SIRE = (nrow(H)+1):(nrow(H)*2))
-  ped[ped$DAM == 0,"DAM"] <- NA
-  ped[ped$SIRE == 0,"SIRE"] <- NA
+  # making sure none of the made up Dam and Sire names
+  # conflict with names already present in the selection candidates
+  while(any(ped$DAM %in% ped$ID)){
+    ped$DAM[ped$DAM %in% ped$ID] <- paste0(ped$DAM[ped$DAM %in% ped$ID], "a")
+  }
+  while(any(ped$SIRE %in% ped$ID)){
+    ped$SIRE[ped$SIRE %in% ped$ID] <- paste0(ped$SIRE[ped$SIRE %in% ped$ID], "a")
+  }
   ped <- prepPed(ped)
   
   families <- generate.fams(H = H, parents = parents, ped = ped, max_F = max_F) 
