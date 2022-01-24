@@ -166,9 +166,7 @@ generate.fams <- function(H, parents, ped, max_F) {
   #Loop to create data frame with possible families
   families <- NULL
   for(row in 1:nrow(H)) {
-    for(col in 1:ncol(H)) {  
-      families <- rbind(families, cbind(rownames(H)[row], colnames(H)[col], H[row,col]/2))
-    }
+    families <- rbind(families, cbind(rownames(H)[row], colnames(H), H[row,]/2))
   }
   colnames(families) <- c("DAM","SIRE", "F")
   families   <- as.data.frame(families)
